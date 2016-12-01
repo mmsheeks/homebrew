@@ -1,5 +1,5 @@
 {
-	"name": "labsic/homebrew",
+	"name": "labsix/homebrew",
 	"description": "Homebrew",
 	"keywords": [ "framework", "homebrew" ],
 	"license": "MIT",
@@ -14,7 +14,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Homebrew\\Core": "core/"
+			"Homebrew\\Core\\": "core/"
 		}
 	}
 }
