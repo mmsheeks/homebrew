@@ -1,5 +1,5 @@
 {
-	"name": "homebrew",
+	"name": "labsic/homebrew",
 	"description": "Homebrew",
 	"keywords": [ "framework", "homebrew" ],
 	"license": "MIT",
