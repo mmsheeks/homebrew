@@ -14,8 +14,8 @@
 		"php": ">=5.5.9"
 	},
 	"autoload": {
-		"psr-4": {
-			"Homebrew\\Core\\": "core/"
+		"psr-0": {
+			"Homebrew": "src/"
 		}
 	}
 }
