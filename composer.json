@@ -3,6 +3,7 @@
 	"description": "Homebrew",
 	"keywords": [ "framework", "homebrew" ],
 	"license": "MIT",
+	"version": "dev-master",
 	"authors": [
 		{
 			"name": "Martin Sheeks",
