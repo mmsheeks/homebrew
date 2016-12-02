@@ -30,8 +30,13 @@ class Request {
 		$this->time 		= $_SERVER['REQUEST_TIME'];
 		$this->secure 		= !empty( $_SERVER['HTTPS'] );
 		$this->remote_addr 	= $_SERVER['REMOTE_ADDR'];
-		$this->remote_host 	= $_SERVER['REMOTE_HOST'];
-		$this->path 		= $_SERVER['PATH_INFO'];
+		$this->remote_host 	= ( isset( $_SERVER['REMOTE_HOST'] ) ? $_SERVER['REMOTE_HOST'] : '' );
+		$this->path 		= ( isset( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']);
+
+		if( $qPos = strpos( $this->path, '?' ) ) {
+			$this->path = substr( $this->path, 0, $qPos );
+		}
+
 	}
 
 	private function loadData()
@@ -51,5 +56,26 @@ class Request {
 		foreach( $_COOKIE as $k => $v ) {
 			$this->cookies[ $k ] = $v;
 		}
+	}
+
+	public function getPath()
+	{
+		return $this->path;
+	}
+
+	public function get( $var )
+	{
+		foreach( $this->data as $k => $v ) {
+			if ( $k == $var ) {
+				return $v;
+			}
+		}
+
+		return null;
+	}
+
+	public function all()
+	{
+		return $this->data;
 	}
 }

@@ -11,11 +11,12 @@
 		}
 	],
 	"require": {
-		"php": ">=5.5.9"
+		"php": ">=5.5.9",
+		"symfony/yaml": "stable"
 	},
 	"autoload": {
-		"psr-0": {
-			"Homebrew": "src/"
+		"psr-4": {
+			"Homebrew\\Core\\": "core/",
 		}
 	}
 }

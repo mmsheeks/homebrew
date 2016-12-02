@@ -1,5 +1,7 @@
 <?php
 
+namespace Homebrew\Core;
+
 use Homebrew\Core\Request;
 use Homebrew\Core\Router;
 
@@ -13,7 +15,6 @@ class Application {
 	}
 
 	public function load() {
-		$router = new Router();
-		var_dump( $this->request );
+		$router = new Router( $this->request );
 	}
 }
