@@ -3,7 +3,6 @@
 	"description": "Homebrew",
 	"keywords": [ "framework", "homebrew" ],
 	"license": "MIT",
-	"version": "dev-master",
 	"authors": [
 		{
 			"name": "Martin Sheeks",
@@ -16,7 +15,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Homebrew\\Core\\": "core/",
+			"Homebrew\\Core\\": "core/"
 		}
 	}
 }
