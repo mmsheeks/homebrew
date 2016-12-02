@@ -30,13 +30,12 @@ class Request {
 		$this->time 		= $_SERVER['REQUEST_TIME'];
 		$this->secure 		= !empty( $_SERVER['HTTPS'] );
 		$this->remote_addr 	= $_SERVER['REMOTE_ADDR'];
-		$this->remote_host 	= ( isset( $_SERVER['REMOTE_HOST'] ) ? $_SERVER['REMOTE_HOST'] : '' );
-		$this->path 		= ( isset( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']);
+		$this->remote_host 	= ( !empty( $_SERVER['REMOTE_HOST'] ) ? $_SERVER['REMOTE_HOST'] : '' );
+		$this->path 		= ( !empty( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI'] );
 
 		if( $qPos = strpos( $this->path, '?' ) ) {
 			$this->path = substr( $this->path, 0, $qPos );
 		}
-
 	}
 
 	private function loadData()
@@ -63,12 +62,15 @@ class Request {
 		return $this->path;
 	}
 
+	public function getMethod()
+	{
+		return $this->method;
+	}
+
 	public function get( $var )
 	{
 		foreach( $this->data as $k => $v ) {
-			if ( $k == $var ) {
-				return $v;
-			}
+			if( $k == $var ) return $v;
 		}
 
 		return null;

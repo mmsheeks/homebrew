@@ -8,6 +8,7 @@ use Homebrew\Core\Router;
 class Application {
 
 	protected $request 	= null;
+	protected $router 	= null;
 	protected $response	= null;
 	
 	public function __construct() {
@@ -15,6 +16,7 @@ class Application {
 	}
 
 	public function load() {
-		$router = new Router( $this->request );
+		$this->router = new Router( $this->request );
+		return $this->router->handle();
 	}
 }
