@@ -12,9 +12,5 @@ class Controller {
 		$this->request = $request;
 		$this->input = $request->all();
 	}
-
-	protected function render( $view, $data ) {
-
-	}
 	
 }
