@@ -15,6 +15,9 @@
 		"twig/twig": "~1.0"
 	},
 	"autoload": {
+		"files": [
+			"helpers/view_helpers.php"
+		],
 		"psr-4": {
 			"Homebrew\\Core\\": "core/",
 			"Homebrew\\Renderer\\": "rendrer/"

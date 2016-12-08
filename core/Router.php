@@ -63,10 +63,10 @@ class Router {
 		foreach( $this->routes as $k => $v ) {
 			$name = $k;
 			$route = $v;
-			unset( $this->routes[$k]);
-			continue;
+			unset( $this->routes[$k] );
+			break;
 		}
-
+		
 		$pattern = explode( '/', $route['path'] );
 
 		if( count( $pattern ) == count( $this->parameters ) ) {
