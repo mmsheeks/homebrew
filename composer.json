@@ -12,15 +12,14 @@
 	"require": {
 		"php": ">=5.5.9",
 		"symfony/yaml": "3.2.*",
-		"twig/twig": "~1.0"
+		"twig/twig": "~1.0",
+		"iluminate/database": "~4.1"
 	},
 	"autoload": {
-		"files": [
-			"helpers/view_helpers.php"
-		],
 		"psr-4": {
 			"Homebrew\\Core\\": "core/",
-			"Homebrew\\Renderer\\": "renderer/"
+			"Homebrew\\Renderer\\": "renderer/",
+			"Homebrew\\Database\\": "database/"
 		}
 	}
 }
