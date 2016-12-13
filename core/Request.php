@@ -10,6 +10,7 @@ class Request {
 	protected $time 		= null;
 	protected $secure 		= null;
 	protected $remote_addr 	= null;
+	protected $host 		= null;
 	protected $remote_host 	= null;
 	protected $path 		= null;
 	protected $data 		= null;
@@ -30,6 +31,7 @@ class Request {
 		$this->time 		= $_SERVER['REQUEST_TIME'];
 		$this->secure 		= !empty( $_SERVER['HTTPS'] );
 		$this->remote_addr 	= $_SERVER['REMOTE_ADDR'];
+		$this->host 		= $_SERVER['HTTP_HOST'];
 		$this->remote_host 	= ( !empty( $_SERVER['REMOTE_HOST'] ) ? $_SERVER['REMOTE_HOST'] : '' );
 		$this->path 		= ( !empty( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI'] );
 
@@ -65,6 +67,16 @@ class Request {
 	public function getMethod()
 	{
 		return $this->method;
+	}
+
+	public function getHost()
+	{
+		return $this->host;
+	}
+
+	public function secure()
+	{
+		return $this->secure;
 	}
 
 	public function get( $var )

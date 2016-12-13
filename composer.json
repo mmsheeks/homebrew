@@ -20,7 +20,7 @@
 		],
 		"psr-4": {
 			"Homebrew\\Core\\": "core/",
-			"Homebrew\\Renderer\\": "rendrer/"
+			"Homebrew\\Renderer\\": "renderer/"
 		}
 	}
 }
