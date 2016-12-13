@@ -13,7 +13,7 @@
 		"php": ">=5.5.9",
 		"symfony/yaml": "3.2.*",
 		"twig/twig": "~1.0",
-		"iluminate/database": "~4.1"
+		"iluminate/database": "4.1.*"
 	},
 	"autoload": {
 		"psr-4": {
