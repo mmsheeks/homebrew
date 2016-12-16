@@ -61,7 +61,6 @@ class Application {
 		
 		//load our config file and setup the request and database as needed
 		$this->loadConfig();
-		$this->request = new Request;
 		if( config('database.enabled') == true ) {
 			$this->database = new Database;
 		}
@@ -74,8 +73,34 @@ class Application {
 	 * @version 1.0.4
 	 */
 	public function load() {
+		$this->request = new Request;
 		$this->router = new Router( $this->request );
 		return $this->router->handle();
+	}
+	
+	/*
+	 * command - execute a command, assuming it's defined
+	 *
+	 * @author Martin Sheeks <martin.sheeks@gmail.com>
+	 * @version 1.0.5
+	 */
+	public function command( $args ) {
+		// get the command
+		$command = 'commands.'.str_replace(':','.', $args[1] );
+		$call = config( $command );
+		
+		// if it couldn't find it, dump and exit
+		if( $call === false ) {
+			printf("Command not found\n");
+			exit();
+		}
+		
+		// call the thing the command says to call.
+		$class = $call['class'];
+		$method = $call['method'];
+		$class = new $class;
+		$class->$method( $args );
+		
 	}
 
 	/*
