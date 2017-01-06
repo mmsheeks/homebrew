@@ -31,3 +31,27 @@ function config( $variable ) {
 	// return the value at the bottom level requested
 	return $workingArr;
 }
+/*
+ * session - helper function for getting or setting session values
+ *
+ * @author Martin Sheeks <martin.sheeks@gmail.com>
+ * @version 1.0.5
+ * @param string $key - The session variable we're trying to get or set
+ * @param string $val - (optional) The value to set to the provided key
+ */
+function session( $key, $val = '' )
+{
+	// if we passed in a value, set that value to the session. easy peesy.
+	if( $val != '' ) {
+		$_SESSION[ $key ] = $val;
+		return $val;
+	}
+	// see if the session has what they're looking for
+	if( isset( $_SESSION[ $key ] ) ) {
+		// if so, return it
+		return $_SESSION[ $key ];
+	} else {
+		// nope, false.
+		return false;
+	}
+}

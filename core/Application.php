@@ -86,8 +86,7 @@ class Application {
 	 */
 	public function command( $args ) {
 		// get the command
-		$command = 'commands.'.str_replace(':','.', $args[1] );
-		$call = config( $command );
+		$call = $this->getCommand( $args[1] );
 		
 		// if it couldn't find it, dump and exit
 		if( $call === false ) {
@@ -125,5 +124,30 @@ class Application {
 		// set a global variable to be used by the config() helper
 		global $app_config;
 		$app_config = $config;
+	}
+	/*
+	 * getCommand - load the commands file from the project
+	 *
+	 * @author Martin Sheeks <martin.sheeks@gmail.com>
+	 * @version 1.0.5
+	 */
+	private function getCommand( $do )
+	{
+		// get the config file
+		$filePath = __DIR__ . '/../../../../commands.yml';
+		$yamlString = file_get_contents( $filePath );
+		// load the yaml content
+		$config = [];
+		$commands = Yaml::parse( $yamlString );
+		$args = explode(':', $do );
+		//find the command requested
+		foreach( $args as $part ) {
+			if( isset( $commands[ $part ] ) ) {
+				$commands = $commands[ $part ];
+			} else {
+				return false;
+			}
+		}
+		return $commands;
 	}
 }
